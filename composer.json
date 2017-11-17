@@ -1,0 +1,26 @@
+{
+    "name": "filesystem",
+    "authors": [
+        {
+            "name": "Rob",
+            "email": "robertheald91@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Filesystem\\FileUpload\\": "src",
+            "Filesystem\\Utils\\": "Utils"
+        }
+    },
+    "scripts": {
+        "test"      : "sudo find /etc/php.d/ -name 'xdebug.ini' -exec mv {} '/etc/php.d/xdebug.ini.disabled' \\; && composer dump-autoload && php tests/load.php && vendor/bin/phpunit ",
+        "coverage"  : "sudo find /etc/php.d/ -name 'xdebug.ini.disabled' -exec mv {} '/etc/php.d/xdebug.ini' \\; && composer dump-autoload && php tests/load.php && vendor/bin/phpunit --coverage-html ./coverage"
+    },
+    "require": {
+        "symfony/process": "^3.1",
+        "aws/aws-sdk-php": "3.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "5.5.*"
+    }
+}
